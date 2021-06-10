@@ -16,8 +16,11 @@
   instances = { count = 1 }
   [groups.run.test_params]
     size = "4GiB"
+    inmembstore = "true"
 
 [[groups]]
   id = "receiver"
   instances = { count = 1 }
+  [groups.run.test_params]
+    inmembstore = "true"
 

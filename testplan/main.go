@@ -92,10 +92,10 @@ func runTransfer(runenv *runtime.RunEnv, initCtx *run.InitContext) error {
 	bs := CreateBlockstore(runenv, inmembstore)
 
 	// create graphsync.
-	lsys := storeutil.LinkSystemForBlockstore(bs)
 	gs := graphsync.New(context.Background(),
 		gsnet.NewFromLibp2pHost(host),
-		lsys,
+		storeutil.LoaderForBlockstore(bs),
+		storeutil.StorerForBlockstore(bs),
 	)
 
 	// create an ephemeral datastore.
